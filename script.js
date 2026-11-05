@@ -4,6 +4,7 @@
   const modal = document.querySelector('#player-modal');
   const modalName = document.querySelector('#modal-player-name');
   const modalNumber = document.querySelector('#modal-player-number');
+  const modalPhoto = document.querySelector('#modal-player-photo');
   let lastFocused = null;
 
   if (menuToggle && nav) {
@@ -27,6 +28,11 @@
     lastFocused = document.activeElement;
     modalName.textContent = card.dataset.player || 'Jugador';
     modalNumber.textContent = card.dataset.number || '01';
+    const playerPhoto = card.querySelector('.player-photo');
+    if (playerPhoto && modalPhoto) {
+      modalPhoto.src = playerPhoto.src;
+      modalPhoto.alt = playerPhoto.alt;
+    }
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('modal-open');
